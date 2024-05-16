@@ -20,10 +20,12 @@ const SideForm: FC<SideFormProps> = ({ setIsFormOpen }) => {
   };
 
   const handleOnBlur = () => {
+    console.log('blur');
     setIsFormOpen(false);
   };
 
   const handleClick = () => {
+    console.log('click');
     if (inputText) {
       dispatch(
         addBoard({
@@ -53,7 +55,7 @@ const SideForm: FC<SideFormProps> = ({ setIsFormOpen }) => {
           placeholder='새로운 게시판 등록하기'
           value={inputText}
           onChange={handleChage}
-          onBlur={handleOnBlur} // 이벤트 순서 : onBlur onMouseDown onMouseUp onClick
+          onBlur={handleOnBlur}
         />
         <button className={button}>
           <FiCheck className={icon} onMouseDown={handleClick} />
