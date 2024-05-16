@@ -1,12 +1,12 @@
 import { FC } from 'react';
-import { List as listType } from '../../types';
+import { List as ListType } from '../../types';
 import List from '../list/List';
 import ActionButton from '../actionButton/ActionButton';
 import { listsContainer } from './ListsContainer.css';
 
 type ListContainerProps = {
   boardId: string;
-  lists: listType[];
+  lists: ListType[];
 };
 
 const ListsContainer: FC<ListContainerProps> = ({ lists, boardId }) => {
