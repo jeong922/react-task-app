@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { Board } from '../../types';
+import { Board, List, Task } from '../../types';
 
 type BoardsState = {
   modalActive: boolean;
@@ -13,6 +13,17 @@ type AddBoardAction = {
 type DeleteListAction = {
   boardId: string;
   listId: string;
+};
+
+type AddListAction = {
+  boardId: string;
+  list: List;
+};
+
+type addTaskAction = {
+  boardId: string;
+  listId: string;
+  task: Task;
 };
 
 const initialState: BoardsState = {
@@ -64,6 +75,28 @@ const boardsSlice = createSlice({
     addBoard: (state, { payload }: PayloadAction<AddBoardAction>) => {
       state.boardArray.push(payload.board); // 불변성 신경 안써도 됨 -> 내부에서 immer 라이브러리를 사용하고 있음
     },
+
+    addList: (state, { payload }: PayloadAction<AddListAction>) => {
+      state.boardArray.map((board) =>
+        board.boardId === payload.boardId
+          ? { ...board, lists: board.lists.push(payload.list) }
+          : board
+      );
+    },
+    addTask: (state, { payload }: PayloadAction<addTaskAction>) => {
+      state.boardArray.map((board) =>
+        board.boardId === payload.boardId
+          ? {
+              ...board,
+              lists: board.lists.map((list) =>
+                list.listId === payload.listId
+                  ? { ...list, tasks: list.tasks.push(payload.task) }
+                  : list
+              ),
+            }
+          : board
+      );
+    },
     deleteList: (state, { payload }: PayloadAction<DeleteListAction>) => {
       state.boardArray = state.boardArray.map((board) =>
         board.boardId === payload.boardId
@@ -82,6 +115,7 @@ const boardsSlice = createSlice({
   },
 });
 
-export const { addBoard, deleteList, setModalActive } = boardsSlice.actions;
+export const { addBoard, deleteList, setModalActive, addList, addTask } =
+  boardsSlice.actions;
 
 export const boardsReducer = boardsSlice.reducer;
