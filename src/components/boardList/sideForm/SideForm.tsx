@@ -20,12 +20,10 @@ const SideForm: FC<SideFormProps> = ({ setIsFormOpen }) => {
   };
 
   const handleOnBlur = () => {
-    console.log('blur');
     setIsFormOpen(false);
   };
 
   const handleClick = () => {
-    console.log('click');
     if (inputText) {
       dispatch(
         addBoard({
