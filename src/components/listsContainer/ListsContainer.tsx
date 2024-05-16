@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { List as listType } from '../../types';
 import List from '../list/List';
 import ActionButton from '../actionButton/ActionButton';
+import { listsContainer } from './ListsContainer.css';
 
 type ListContainerProps = {
   boardId: string;
@@ -10,7 +11,7 @@ type ListContainerProps = {
 
 const ListsContainer: FC<ListContainerProps> = ({ lists, boardId }) => {
   return (
-    <div>
+    <div className={listsContainer}>
       {lists.map((list) => (
         <List key={list.listId} list={list} boardId={boardId} />
       ))}
