@@ -29,7 +29,7 @@ export const addButton = style({
 });
 
 export const boardItem = style({
-  color: vars.color.darkText,
+  color: vars.color.brightText,
   fontSize: vars.fontSizing.T3,
   backgroundColor: vars.color.mainFaded,
   padding: vars.spacing.medium,

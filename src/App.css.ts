@@ -7,7 +7,7 @@ export const vars = createGlobalTheme(':root', {
     mainFaded: 'rgb(56, 90, 136)',
     mainFadedBright: 'rgb(148 163 184)',
     list: 'rgb(235,236,240)',
-    task: 'rgb(244,244,244)',
+    task: 'rgb(255,255,255)',
     taskHover: 'rgb(245,245,245)',
     brightText: 'rgb(255,255,255)',
     darkText: 'rgb(24,42,77)',
