@@ -1,9 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { Board } from '../../types';
 
 type BoardsState = {
   modalActive: boolean;
   boardArray: Board[];
+};
+
+type AddBoardAction = {
+  board: Board;
 };
 
 const initialState: BoardsState = {
@@ -51,7 +55,13 @@ const initialState: BoardsState = {
 const boardsSlice = createSlice({
   name: 'boards',
   initialState,
-  reducers: {},
+  reducers: {
+    addBoard: (state, { payload }: PayloadAction<AddBoardAction>) => {
+      state.boardArray.push(payload.board); // 불변성 신경 안써도 됨 -> 내부에서 immer 라이브러리를 사용하고 있음
+    },
+  },
 });
+
+export const { addBoard } = boardsSlice.actions;
 
 export const boardsReducer = boardsSlice.reducer;

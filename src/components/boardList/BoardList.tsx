@@ -54,7 +54,7 @@ const BoardList: FC<BoardListProps> = ({ activeBoardId, setActiveBoardId }) => {
       ))}
       <div className={addSection}>
         {isFormOpen ? (
-          <SideForm inputRef={inputRef} setIsFormOpen={setIsFormOpen} />
+          <SideForm setIsFormOpen={setIsFormOpen} />
         ) : (
           <FiPlusCircle className={addButton} onClick={handleClick} />
         )}

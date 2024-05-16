@@ -8,7 +8,7 @@ export interface Task {
 export interface LogItem {
   logId: string;
   logAuthor: string;
-  logMEssage: string;
+  logMessage: string;
   logTimestamp: string;
 }
 
