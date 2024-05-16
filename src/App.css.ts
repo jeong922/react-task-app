@@ -4,7 +4,7 @@ export const vars = createGlobalTheme(':root', {
   color: {
     main: 'rgb(203 213 225)',
     mainDarker: 'rgb(15 23 42)',
-    mainFaded: 'rgb(226 232 240)',
+    mainFaded: 'rgb(56, 90, 136)',
     mainFadedBright: 'rgb(148 163 184)',
     list: 'rgb(235,236,240)',
     task: 'rgb(244,244,244)',
@@ -12,7 +12,7 @@ export const vars = createGlobalTheme(':root', {
     brightText: 'rgb(255,255,255)',
     darkText: 'rgb(24,42,77)',
     secondaryDarkText: 'rgb(94,108,132)',
-    secondaryDarkTextHover: 'rgb(128,129,226)',
+    secondaryDarkTextHover: 'rgb(198, 218, 255)',
     selectedTap: 'rgb(137,176,174)',
     updatedButton: 'rgb(203 213 225)',
     deleteButton: 'rgb(237,51,88)',
