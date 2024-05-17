@@ -1,6 +1,12 @@
 import { useState } from 'react';
 import './App.css';
-import { appContainer, board, buttons } from './App.css';
+import {
+  appContainer,
+  board,
+  buttons,
+  deleteBoardButton,
+  loggerButton,
+} from './App.css';
 import BoardList from './components/boardList/BoardList';
 import ListsContainer from './components/listsContainer/ListsContainer';
 import { useTypedSelector } from './hooks/redux';
@@ -30,8 +36,11 @@ function App() {
         <ListsContainer lists={lists} boardId={getActiveBoard.boardId} />
       </div>
       <div className={buttons}>
-        <button>이 게시판 삭제하기</button>
-        <button onClick={() => setIsLoggerOpen(!isLoggerOpen)}>
+        <button className={deleteBoardButton}>이 게시판 삭제하기</button>
+        <button
+          className={loggerButton}
+          onClick={() => setIsLoggerOpen(!isLoggerOpen)}
+        >
           {isLoggerOpen ? '활동 목록 숨기기' : '활동 목록 보이기'}
         </button>
       </div>
