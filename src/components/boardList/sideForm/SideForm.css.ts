@@ -14,13 +14,14 @@ export const input = style({
 });
 
 export const button = style({
+  marginLeft: vars.spacing.medium,
   backgroundColor: 'transparent',
+  border: 'none',
 });
 
 export const icon = style({
   color: vars.color.brightText,
   fontSize: vars.fontSizing.T2,
-  marginLeft: vars.spacing.medium,
   cursor: 'pointer',
   ':hover': {
     opacity: 0.8,
