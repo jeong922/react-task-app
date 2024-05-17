@@ -10,6 +10,10 @@ type AddBoardAction = {
   board: Board;
 };
 
+type DeleteBoardAction = {
+  boardId: string;
+};
+
 type DeleteListAction = {
   boardId: string;
   listId: string;
@@ -80,6 +84,12 @@ const boardsSlice = createSlice({
   reducers: {
     addBoard: (state, { payload }: PayloadAction<AddBoardAction>) => {
       state.boardArray.push(payload.board); // 불변성 신경 안써도 됨 -> 내부에서 immer 라이브러리를 사용하고 있음
+    },
+
+    deleteBoard: (state, { payload }: PayloadAction<DeleteBoardAction>) => {
+      state.boardArray = state.boardArray.filter(
+        (board) => board.boardId !== payload.boardId
+      );
     },
 
     addList: (state, { payload }: PayloadAction<AddListAction>) => {
@@ -163,6 +173,7 @@ const boardsSlice = createSlice({
 
 export const {
   addBoard,
+  deleteBoard,
   deleteList,
   setModalActive,
   addList,
