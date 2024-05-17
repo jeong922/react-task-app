@@ -9,6 +9,7 @@ export const wrapper = style({
   alignItems: 'center',
   position: 'absolute',
   backgroundColor: vars.color.overlay,
+  top: '0px',
   zIndex: 10000,
 });
 

@@ -15,6 +15,7 @@ import { LoggerModal } from './components/loggerModal/LoggerModal';
 import { deleteBoard } from './store/slices/boardsSlice';
 import { addLog } from './store/slices/loggerSlice';
 import { v4 as uuidv4 } from 'uuid';
+import ModalPotal from './components/modalPotal/ModalPotal';
 
 function App() {
   const dispatch = useTypedDispatch();
@@ -58,8 +59,16 @@ function App() {
 
   return (
     <div className={appContainer}>
-      {isLoggerOpen ? <LoggerModal setIsLoggerOpen={setIsLoggerOpen} /> : null}
-      {modalActive ? <EditModal /> : null}
+      {isLoggerOpen && (
+        <ModalPotal>
+          <LoggerModal setIsLoggerOpen={setIsLoggerOpen} />
+        </ModalPotal>
+      )}
+      {modalActive && (
+        <ModalPotal>
+          <EditModal />
+        </ModalPotal>
+      )}
       <BoardList
         activeBoardId={activeBoardId}
         setActiveBoardId={setActiveBoardId}

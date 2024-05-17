@@ -49,6 +49,7 @@ export const appContainer = style({
   minHeight: '100vh',
   height: 'max-content',
   width: '100vw',
+  position: 'relative',
 });
 
 export const board = style({
