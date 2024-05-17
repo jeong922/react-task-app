@@ -104,7 +104,6 @@ const boardsSlice = createSlice({
       );
     },
     updateTask: (state, { payload }: PayloadAction<addTaskAction>) => {
-      console.log(payload.task);
       state.boardArray = state.boardArray.map((board) =>
         board.boardId === payload.boardId
           ? {

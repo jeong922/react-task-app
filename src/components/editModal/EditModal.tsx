@@ -8,6 +8,17 @@ import {
 } from '../../store/slices/boardsSlice';
 import { addLog } from '../../store/slices/loggerSlice';
 import { v4 as uuidv4 } from 'uuid';
+import {
+  buttons,
+  closeButton,
+  deleteButton,
+  header,
+  input,
+  modalWindow,
+  title,
+  updateButton,
+  wrapper,
+} from './EditModal.css';
 
 const EditModal = () => {
   const dispatch = useTypedDispatch();
@@ -30,7 +41,6 @@ const EditModal = () => {
   };
 
   const handleUpdate = () => {
-    console.log(editingState);
     dispatch(
       updateTask({
         boardId: editingState.boardId,
@@ -73,39 +83,52 @@ const EditModal = () => {
   };
 
   return (
-    <div>
-      <div>
-        <div>
-          <span>{editingState.task.taskName}</span>
-          <FiX onClick={handleCloseButton} />
+    <div className={wrapper}>
+      <div className={modalWindow}>
+        <div className={header}>
+          <span className={title}>{editingState.task.taskName}</span>
+          <FiX className={closeButton} onClick={handleCloseButton} />
         </div>
-        <label htmlFor='taskName'>제목</label>
+        <label className={title} htmlFor='taskName'>
+          제목
+        </label>
         <input
+          className={input}
           type='text'
           id='taskName'
           name='taskName'
           value={data.task.taskName}
           onChange={handleChange}
         />
-        <label htmlFor='taskDescription'>설명</label>
+        <label className={title} htmlFor='taskDescription'>
+          설명
+        </label>
         <input
+          className={input}
           type='text'
           id='taskDescription'
           name='taskDescription'
           value={data.task.taskDescription}
           onChange={handleChange}
         />
-        <label htmlFor='taskOwner'>생성한 사람</label>
+        <label className={title} htmlFor='taskOwner'>
+          생성한 사람
+        </label>
         <input
+          className={input}
           type='text'
           id='taskOwner'
           name='taskOwner'
           value={data.task.taskOwner}
           onChange={handleChange}
         />
-        <div>
-          <button onClick={handleUpdate}>일 수정하기</button>
-          <button onClick={handleDelete}>일 삭제하기</button>
+        <div className={buttons}>
+          <button className={updateButton} onClick={handleUpdate}>
+            일 수정하기
+          </button>
+          <button className={deleteButton} onClick={handleDelete}>
+            일 삭제하기
+          </button>
         </div>
       </div>
     </div>
