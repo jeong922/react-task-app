@@ -7,6 +7,7 @@ export const wrapper = style({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  backgroundColor: vars.color.overlay,
   position: 'absolute',
   zIndex: 10000,
 });
