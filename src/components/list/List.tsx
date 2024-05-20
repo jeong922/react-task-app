@@ -34,7 +34,6 @@ const List: FC<ListProps> = ({ list, boardId }) => {
   const handelTaskChange = (
     boardId: string,
     listId: string,
-    taskId: string,
     task: TaskType
   ) => {
     dispatch(setModalData({ boardId, listId, task }));
@@ -59,14 +58,11 @@ const List: FC<ListProps> = ({ list, boardId }) => {
           {list.tasks.map((task, index) => (
             <div
               key={task.taskId}
-              onClick={() =>
-                handelTaskChange(boardId, list.listId, task.taskId, task)
-              }
+              onClick={() => handelTaskChange(boardId, list.listId, task)}
             >
               <Task
                 taskName={task.taskName}
                 taskDescription={task.taskDescription}
-                boardId={boardId}
                 id={task.taskId}
                 index={index}
               />
