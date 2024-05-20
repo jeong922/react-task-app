@@ -3,7 +3,12 @@ import { useTypedDispatch, useTypedSelector } from '../../hooks/redux';
 import SideForm from './sideForm/SideForm';
 import { FiLogIn, FiPlusCircle } from 'react-icons/fi';
 import { GoSignOut } from 'react-icons/go';
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+} from 'firebase/auth';
 import { app } from '../../firebase';
 import {
   addSection,
@@ -14,7 +19,8 @@ import {
   title,
 } from './BoardList.css';
 import clsx from 'clsx';
-import { setUser } from '../../store/slices/userSlice';
+import { removeUser, setUser } from '../../store/slices/userSlice';
+import { useAuth } from '../../hooks/useAuth';
 
 type BoardListProps = {
   activeBoardId: string;
@@ -29,6 +35,8 @@ const BoardList: FC<BoardListProps> = ({ activeBoardId, setActiveBoardId }) => {
 
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
+
+  const { isAuth } = useAuth();
 
   const handleClick = () => {
     setIsFormOpen(!isFormOpen);
@@ -47,6 +55,14 @@ const BoardList: FC<BoardListProps> = ({ activeBoardId, setActiveBoardId }) => {
             id: userCredential.user.uid,
           })
         );
+      })
+      .catch(console.error);
+  };
+
+  const handleSignOut = () => {
+    signOut(auth)
+      .then(() => {
+        dispatch(removeUser());
       })
       .catch(console.error);
   };
@@ -80,8 +96,11 @@ const BoardList: FC<BoardListProps> = ({ activeBoardId, setActiveBoardId }) => {
         ) : (
           <FiPlusCircle className={button} onClick={handleClick} />
         )}
-        <GoSignOut className={button} />
-        <FiLogIn className={button} onClick={handleLogin} />
+        {isAuth ? (
+          <GoSignOut className={button} onClick={handleSignOut} />
+        ) : (
+          <FiLogIn className={button} onClick={handleLogin} />
+        )}
       </div>
     </div>
   );
