@@ -24,4 +24,8 @@ dist-ssr
 *.sw?
 
 .history
-.env
+
+.env                
+.env.local         
+.env.[mode]         
+.env.[mode].local   
